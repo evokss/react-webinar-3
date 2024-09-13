@@ -5,6 +5,15 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
+
+    // Наибольший код в исходном списке
+    this.highestCode = Math.max(0, ...this.state.list.map(item => item.code));
+
+    // Счетчик выбора для всех элементов на 0
+    this.state.list = this.state.list.map(item => ({
+      ...item,
+      selectionCount: 0,
+    }));
   }
 
   /**
@@ -42,9 +51,14 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
+    // Увеличиваем на 1 код записи, чтобы гарантировать его уникальность в рамках сессии
+    this.highestCode += 1;
+
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.state.list.length + 1, title: 'Новая запись' }],
+
+      // Используем уникальный код, добавили счетчик выделений
+      list: [...this.state.list, { code: this.highestCode, title: 'Новая запись', selectionCount: 0 }],
     });
   }
 
@@ -68,9 +82,16 @@ class Store {
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
-          item.selected = !item.selected;
+          return {
+            ...item,
+            selected: !item.selected,
+            selectionCount: item.selected ? item.selectionCount : item.selectionCount + 1, // Увеличие счетчика выдлений при активации
+          };
         }
-        return item;
+        return {
+          ...item,
+          selected: false, // Отмена других выделений
+        };
       }),
     });
   }
