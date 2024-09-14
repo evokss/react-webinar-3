@@ -26,3 +26,7 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+export function getCorrectWord(count) {
+  return ([2, 3, 4].includes(count % 10) && ![12, 13, 14].includes(count % 100)) ? 'раза' : 'раз';
+}

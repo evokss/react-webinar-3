@@ -1,5 +1,6 @@
 import React from 'react';
 import { createElement } from './utils.js';
+import { getCorrectWord } from './utils.js';
 import './styles.css';
 
 /**
@@ -30,7 +31,7 @@ function App({ store }) {
                 <div className="Item-title">
                   {item.title}
                   {item.selectionCount > 0 && (
-                    ` | Выделяли ${item.selectionCount} раз`
+                    ` | Выделяли ${item.selectionCount} ${getCorrectWord(item.selectionCount)}`
                   )}
                 </div>
                 <div className="Item-actions">
