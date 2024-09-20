@@ -1,25 +1,30 @@
-.Item {
+.CartModalItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background-color 1s;
+  border-bottom: 1px dashed #ccc;
 }
 
-.Item-code {
+.CartModalItem-code {
   padding: 20px 10px 20px 20px;
 }
 
-.Item-title {
+.CartModalItem-title {
   flex-grow: 1;
   padding: 20px 10px;
 }
 
-.Item-price {
+.CartModalItem-price {
   padding: 20px 10px;
   white-space: nowrap;
 }
 
-.Item-actions {
+.CartModalItem-quantity {
+  padding: 20px 10px 20px 50px;
+}
+
+.CartModalItem-actions {
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;
