@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from '../item';
+import CartModalItem from '../cart-modal-item';
 import './style.css';
 
-function List({ list, onAddToCart }) {
+function List({
+  list,
+  onAddToCart = () => {},
+  onRemoveFromCart = () => {},
+  isCart = false,
+}) {
   return (
     <div className="List">
       {list.map(item => (
         <div key={item.code} className="List-item">
-          <Item item={item} onAddToCart={onAddToCart} />
+          {isCart ? (
+            <CartModalItem item={item} onRemoveFromCart={onRemoveFromCart} />
+          ) : (
+            <Item item={item} onAddToCart={onAddToCart} />
+          )}
         </div>
       ))}
     </div>
@@ -21,11 +31,9 @@ List.propTypes = {
       code: PropTypes.number,
     }),
   ).isRequired,
-  onAddToCart: PropTypes.func.isRequired,
-};
-
-List.defaultProps = {
-  onAddToCart: () => {},
+  onAddToCart: PropTypes.func,
+  onRemoveFromCart: PropTypes.func,
+  isCart: PropTypes.bool,
 };
 
 export default React.memo(List);

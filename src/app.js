@@ -11,7 +11,7 @@ import CartModal from './components/cart-modal';
  * @returns {React.ReactElement}
  */
 function App({ store }) {
-  const { list, cart, isCartOpen } = store.getState();
+  const { list, cart, isCartOpen, totalUniqueItems, totalPrice } = store.getState();
 
   const callbacks = {
     onAddToCart: useCallback(
@@ -30,9 +30,6 @@ function App({ store }) {
       store.toggleCartModal();
     }, [store]),
   };
-
-  const totalUniqueItems = cart.length;
-  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <PageLayout>

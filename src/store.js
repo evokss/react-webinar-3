@@ -5,8 +5,13 @@ import { generateCode } from './utils';
  */
 class Store {
   constructor(initState = {}) {
-    this.state = initState;
+    this.state = {
+      ...initState,
+      totalUniqueItems: 0,
+      totalPrice: 0,
+    };
     this.listeners = []; // Слушатели изменений состояния
+    this.updateTotals(); // Инициализация
   }
 
   /**
@@ -36,6 +41,7 @@ class Store {
    */
   setState(newState) {
     this.state = newState;
+    this.updateTotals(); // Обновляем суммы при изменении состояния
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
   }
@@ -71,6 +77,15 @@ class Store {
       ...this.state,
       isCartOpen: !this.state.isCartOpen,
     });
+  }
+
+  // Обновление количества уникальных товаров и общей суммы
+  updateTotals() {
+    const totalUniqueItems = this.state.cart.length;
+    const totalPrice = this.state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    
+    this.state.totalUniqueItems = totalUniqueItems;
+    this.state.totalPrice = totalPrice;
   }
 }
 

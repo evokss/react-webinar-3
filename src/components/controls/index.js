@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { plural } from '../../utils';
+import { plural, formatPrice } from '../../utils';
 import './style.css';
 
-function Controls({ totalUniqueItems, totalPrice, onToggleCartModal }) {
+function Controls({
+  totalUniqueItems = 0,
+  totalPrice = 0,
+  onToggleCartModal = () => {},
+}) {
   const isEmpty = totalUniqueItems === 0;
 
   const itemWord = plural(totalUniqueItems, {
@@ -16,7 +20,7 @@ function Controls({ totalUniqueItems, totalPrice, onToggleCartModal }) {
     <div className="Controls">
       <div className="Controls-cart">В корзине: </div>
       <div className="Controls-totalItemsPrice">
-        {isEmpty ? 'пусто' : `${totalUniqueItems} ${itemWord} / ${totalPrice} ₽`}
+        {isEmpty ? 'пусто' : `${totalUniqueItems} ${itemWord} / ${formatPrice(totalPrice)}`}
       </div>
       <div className="Controls-actions">
         <button className='Controls-actions-btn' onClick={onToggleCartModal}>
@@ -31,12 +35,6 @@ Controls.propTypes = {
   totalUniqueItems: PropTypes.number.isRequired,
   totalPrice: PropTypes.number.isRequired,
   onToggleCartModal: PropTypes.func.isRequired,
-};
-
-Controls.defaultProps = {
-  totalUniqueItems: 0,
-  totalPrice: 0,
-  onToggleCartModal: () => {},
 };
 
 export default React.memo(Controls);

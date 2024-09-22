@@ -1,34 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardModalItem from '../cart-modal-item';
+import ModalLayout from '../modal-layout';
+import List from '../list';
+import { formatPrice } from '../../utils';
+import { cn as bem } from '@bem-react/classname';
 import './style.css';
 
-function CartModal({ cart, onRemoveFromCart, onClose }) {
+const cn = bem('CartModal');
+
+function CartModal({
+  cart = [],
+  onRemoveFromCart = () => {},
+  onClose = () => {},
+}) {
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="CartModal-overlay" onClick={onClose}> {/* Затемненный фон */}
-      <div className="CartModal" onClick={(e) => e.stopPropagation()}> {/* Окно, которое не закрывается при клике внутри */}
-        <div className="CartModal-header">
-          <h1>Корзина</h1>
-          <button onClick={onClose}>Закрыть</button>
-        </div>
-        <div className="CartModal-header-border"></div>
-        <div className="CartModal-list">
-          {cart.map(item => (
-            <CardModalItem
-              key={item.code}
-              item={item}
-              onRemoveFromCart={onRemoveFromCart}
-            />
-          ))}
-        </div>
-        <div className="CartModal-total">
-          <p>Итого</p>
-          <div>{totalPrice} ₽</div>
-        </div>
+    <ModalLayout onClose={onClose}>
+      <div className={cn('header')}>
+        <h1>Корзина</h1>
+        <button className={cn('close-btn')} onClick={onClose}>Закрыть</button>
       </div>
-    </div>
+      <div className={cn('header-border')}></div>
+      <div className={cn('list')}>
+        <List list={cart} onRemoveFromCart={onRemoveFromCart} isCart />
+      </div>
+      <div className={cn('total')}>
+        <p>Итого</p>
+        <div>{formatPrice(totalPrice)}</div>
+      </div>
+    </ModalLayout>
   );
 }
 
@@ -43,12 +44,6 @@ CartModal.propTypes = {
   ).isRequired,
   onRemoveFromCart: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
-};
-
-CartModal.defaultProps = {
-  cart: [],
-  onRemoveFromCart: () => {},
-  onClose: () => {},
 };
 
 export default React.memo(CartModal);
