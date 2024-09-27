@@ -2,8 +2,9 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import Item from '../item';
 import './style.css';
+import Pagination from '../pagination';
 
-function List({ list, renderItem }) {
+function List({ list, renderItem, currentPage, totalCount, limit, onPageChange }) {
   return (
     <div className="List">
       {list.map(item => (
@@ -11,6 +12,14 @@ function List({ list, renderItem }) {
           {renderItem(item)}
         </div>
       ))}
+      
+      {/* Пагинация */}
+      <Pagination
+        totalCount={totalCount}
+        limit={limit}
+        currentPage={currentPage}
+        onPageChange={onPageChange} // Обновление текущей страницы
+      />
     </div>
   );
 }
@@ -22,6 +31,10 @@ List.propTypes = {
     }),
   ).isRequired,
   renderItem: PropTypes.func,
+  currentPage: PropTypes.number.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {

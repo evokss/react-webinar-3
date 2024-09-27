@@ -1,0 +1,30 @@
+.pagination {
+  display: flex; /* Используем flexbox для расположения элементов */
+  justify-content: flex-end; /* Выравнивание по правому краю */
+  margin: 20px 0; /* Отступ сверху и снизу */
+}
+
+.pagination-button {
+  width: 20px; /* Ширина кнопки */
+  height: 20px; /* Высота кнопки */
+  background-color: transparent; /* Фон по умолчанию */
+  color: black; /* Цвет текста по умолчанию */
+  border: 1px solid #ccc; /* Рамка по умолчанию */
+  margin: 0 5px; /* Отступы между кнопками */
+  cursor: pointer; /* Указатель курсора на кнопках */
+  border-radius: 5px; /* Скругление углов */
+  transition: background-color 0.3s; /* Плавный переход цвета фона */
+  font-size: 12px; /* Размер шрифта для текста */
+  display: flex; /* Используем flexbox для центрирования текста */
+  align-items: center; /* Вертикальное центрирование текста */
+  justify-content: center; /* Горизонтальное центрирование текста */
+}
+
+.pagination-button:hover {
+  background-color: #f0f0f0; /* Цвет фона при наведении */
+}
+
+.pagination-button.active {
+  background-color: #0087E9; /* Цвет фона для активной кнопки */
+  color: white; /* Цвет текста для активной кнопки */
+}
