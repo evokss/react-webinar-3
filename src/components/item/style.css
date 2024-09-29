@@ -1,13 +1,8 @@
 .Item {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   transition: background-color 1s;
   padding-left: 10px;
-}
-
-.Item_selected {
-  background: #75aaf1;
-  color: #fff;
 }
 
 .Item-code {
@@ -15,8 +10,16 @@
 }
 
 .Item-title {
-  width: 100%;
+  color: black;
+  text-decoration: none;
   padding: 20px 10px;
+  transition: text-decoration 0.3s ease;
+}
+
+.Item-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  transition: text-decoration 0.3s ease;
 }
 
 .Item-actions {

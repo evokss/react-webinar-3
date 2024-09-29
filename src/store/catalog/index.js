@@ -10,6 +10,10 @@ class Catalog extends StoreModule {
   initState() {
     return {
       list: [],
+      totalCount: 0,
+      limit: 10,
+      skip: 0,
+      currentProduct: null,
     };
   }
 
@@ -21,18 +25,37 @@ class Catalog extends StoreModule {
       this.setState(
         {
           ...this.getState(),
-          list: json.result.items, // Список товаров
-          totalCount: json.result.count, // Общее количество товаров
-          limit, // Количество товаров на странице
-          skip,  // Текущее смещение (страница)
+          list: json.result.items,
+          totalCount: json.result.count,
+          limit,
+          skip,
         },
         'Загружены товары с пагинацией',
       );
     } catch (error) {
-      console.error('Ошибка загрузки товаров:', error); // Ловим ошибки запроса
+      console.error('Ошибка загрузки товаров:', error);
     }
   }
   
+  async getProduct(id) {
+    try {
+      const response = await fetch(`/api/v1/articles/${id}`);
+      const json = await response.json();
+      
+      this.setState(
+        {
+          ...this.getState(),
+          currentProduct: json.result,
+        },
+        `Загружен товар с id ${id}`,
+      );
+      
+      return json.result;
+    } catch (error) {
+      console.error(`Ошибка при загрузке товара с id ${id}:`, error);
+      return null;
+    }
+  }
 }
 
 export default Catalog;

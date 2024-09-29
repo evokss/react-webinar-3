@@ -1,0 +1,25 @@
+p {
+  margin: 20px;
+  font-size: 18px;
+}
+
+.ProductPage {
+  padding: 20px 40px;
+}
+
+.ProductPage-description {
+  margin-top: 0;
+}
+
+.ProductPage-bold-fragment {
+  font-weight: bold;
+}
+
+.ProductPage-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ProductPage-button {
+  margin-left: 20px;
+}

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import List from '../list';
 import './style.css';
 
 const Pagination = ({ totalCount, limit, currentPage, onPageChange }) => {
@@ -46,6 +48,13 @@ const Pagination = ({ totalCount, limit, currentPage, onPageChange }) => {
       )}
     </div>
   );
+};
+
+List.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;
