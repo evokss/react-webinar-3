@@ -1,31 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '../list';
 import './style.css';
 
 const Pagination = ({ totalCount, limit, currentPage, onPageChange }) => {
-  const totalPages = Math.ceil(totalCount / limit); // Вычисляем общее количество страниц
+  const totalPages = Math.ceil(totalCount / limit);
 
-  // Функция смены страницы
   const handlePageChange = (newPage) => {
-    if (newPage < 1 || newPage > totalPages) return; // Проверяем границы страниц
-    onPageChange(newPage); // Обновляем текущую страницу
+    if (newPage < 1 || newPage > totalPages) return;
+    onPageChange(newPage);
   };
 
-  // Генерация массива страниц для показа
   const getPages = () => {
     const pages = [];
-    pages.push(1); // Первая страница всегда
 
-    if (currentPage > 3) pages.push('...'); // Если активная страница далеко от начала, добавляем троеточие
+    if (totalPages <= 7) {
+      // Если общее количество страниц меньше или равно 7, показываем все страницы
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Всегда показываем первую страницу
+      pages.push(1);
 
-    for (let i = Math.max(2, currentPage - 2); i <= Math.min(totalPages - 1, currentPage + 2); i++) {
-      pages.push(i);
+      if (currentPage <= 3) {
+        // Если текущая страница 1, 2 или 3, показываем 1, 2, 3, 4...totalPages
+        for (let i = 2; i <= Math.min(4, totalPages); i++) {
+          pages.push(i);
+        }
+        if (totalPages > 4) {
+          pages.push('...');
+          pages.push(totalPages);
+        }
+      } else if (currentPage >= totalPages - 2) {
+        // Если текущая страница ближе к концу (последние 3 страницы)
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        // В остальных случаях показываем первую, текущую страницу, соседние страницы и последнюю
+        pages.push('...');
+        pages.push(currentPage - 1);
+        pages.push(currentPage);
+        pages.push(currentPage + 1);
+        pages.push('...');
+        pages.push(totalPages);
+      }
     }
-
-    if (currentPage < totalPages - 3) pages.push('...'); // Если активная страница далеко от конца, добавляем троеточие
-
-    pages.push(totalPages); // Последняя страница всегда
 
     return pages;
   };
@@ -39,7 +60,7 @@ const Pagination = ({ totalCount, limit, currentPage, onPageChange }) => {
           <button
             key={index}
             onClick={() => handlePageChange(page)}
-            className={`pagination-button ${currentPage === page ? 'active' : ''}`} // Применяем класс для активной страницы
+            className={`pagination-button ${currentPage === page ? 'active' : ''}`}
             disabled={currentPage === page}
           >
             {page}
@@ -50,7 +71,7 @@ const Pagination = ({ totalCount, limit, currentPage, onPageChange }) => {
   );
 };
 
-List.propTypes = {
+Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
