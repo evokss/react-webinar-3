@@ -10,6 +10,7 @@ import Navigation from '../../containers/navigation';
 import Spinner from '../../components/spinner';
 import ArticleCard from '../../components/article-card';
 import LocaleSelect from '../../containers/locale-select';
+import UserAuthBar from '../../components/user-auth-bar';
 
 /**
  * Страница товара с первичной загрузкой товара по id из url адреса
@@ -22,11 +23,14 @@ function Article() {
 
   useInit(() => {
     store.actions.article.load(params.id);
+    // store.actions.login.setToken();
   }, [params.id]);
 
   const select = useSelector(state => ({
     article: state.article.data,
     waiting: state.article.waiting,
+    user: state.login.nameData,
+
   }));
 
   const { t } = useTranslate();
@@ -34,10 +38,16 @@ function Article() {
   const callbacks = {
     // Добавление в корзину
     addToBasket: useCallback(_id => store.actions.basket.addToBasket(_id), [store]),
+    logout: useCallback(() => store.actions.login.logOut(), [store])
+
   };
 
   return (
     <PageLayout>
+      <UserAuthBar nameUser={select.user.name} 
+                button={t('login')}
+                logout={callbacks.logout}
+      />
       <Head title={select.article.title}>
         <LocaleSelect />
       </Head>

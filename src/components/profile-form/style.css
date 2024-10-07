@@ -1,0 +1,13 @@
+.ProfileForm {
+  padding: 20px;
+}
+
+.ProfileForm-text {
+  padding-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.ProfileForm-value {
+  font-weight: bold;
+}

@@ -1,0 +1,46 @@
+.LoginForm {
+  padding: 20px;
+}
+
+.LoginForm h2 {
+  font-weight: 700;
+  size: 24px;
+  margin: 15px 0;
+}
+
+.LoginForm-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 203px;
+  gap: 20px;
+}
+
+.LoginForm-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginForm-input input {
+  height: 20px;
+}
+
+.LoginForm-input label {
+  font-size: 16px;
+}
+
+.LoginForm-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.LoginForm-button {
+  cursor: pointer;
+  align-self: flex-start;
+  font-size: 13px;
+}
+
+.LoginForm-error {
+  color: #FF0000;
+  font-size: 16px;
+}

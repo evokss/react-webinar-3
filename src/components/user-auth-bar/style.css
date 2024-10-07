@@ -1,0 +1,11 @@
+.UserAuthBar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  gap: 20px;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+.UserAuthBar button {
+  cursor: pointer;
+}
