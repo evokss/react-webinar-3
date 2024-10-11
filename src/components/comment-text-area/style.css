@@ -1,0 +1,21 @@
+.CommentTextArea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  padding-bottom: 30px;
+  margin-right: 40px;
+}
+
+.CommentTextArea-title {
+  font-weight: 700;
+}
+
+.CommentTextArea-field {
+  min-height: 76px;
+}
+
+.CommentTextArea-button {
+  align-self: start;
+  margin-right: 10px;
+}

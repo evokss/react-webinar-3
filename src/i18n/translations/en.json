@@ -20,5 +20,17 @@
   "auth.password": "Password",
   "auth.signIn": "Sign in",
   "session.signIn": "Sign In",
-  "session.signOut": "Sign Out"
+  "session.signOut": "Sign Out",
+  "option.log": "Log in",
+  "option.able": ", to have an opportunity ",
+  "option.answer": "to reply",
+  "option.comment": "to comment",
+  "comment.title": "Comments",
+  "answer": "Reply",
+  "cancel": "Cancel",
+  "send": "Submit",
+  "myanswer": "My reply for",
+  "text": "Text",
+  "new comment": "New comment",
+  "newReply": "New reply"
 }

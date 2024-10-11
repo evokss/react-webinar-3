@@ -1,0 +1,33 @@
+.Comment-user-date {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.Comment-user {
+  font-weight: bold;
+}
+
+.Comment-date {
+  color: rgba(102, 102, 102, 1);
+}
+
+.Comment-text {
+  font-size: 14px;
+  margin: 10px 0;
+  padding-right: 20px;
+}
+
+.Comment-answer-btn {
+  color: rgba(0, 135, 233, 1);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-bottom: 26px;
+  padding: 0;
+  font-size: 12px;
+}
+
+.Comment-answer-btn:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,18 @@
+.CommentOptions {
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.CommentOptions-link {
+  color: rgba(0, 135, 233, 1);
+}
+
+.CommentOptions-cancel {
+  font-size: 16px;
+  color: rgba(102, 102, 102, 1);
+  display: inline-block;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
