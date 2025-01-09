@@ -4,9 +4,8 @@ This website is the culmination of my successful completion of the commercial Re
 Over the course of three months, I completed all assigned tasks and had the privilege of refining my skills through a variety of challenges. </br> 
 These included an intensive stream of core tasks, additional opportunities for early finishers, and creative projects for those eager to showcase their innovation in web app development.
 
-You can view my newly earned certificate here: [LINK](https://www.linkedin.com/in/evakoss/overlay/1729846576652/single-media-viewer/?profileId=ACoAADqRPIABg6xjAzU9Q5wgeEYMjwNkDJ0WKCo)
-
-For anyone curious to explore the deployed version, you can check it out here: [LINK]
+- You can view my newly earned certificate here: [LINK](https://www.linkedin.com/in/evakoss/overlay/1729846576652/single-media-viewer/?profileId=ACoAADqRPIABg6xjAzU9Q5wgeEYMjwNkDJ0WKCo)
+- For anyone curious to explore the deployed version, you can check it out here: [LINK]
 
 ## Getting Started
 Follow these steps to set up the project locally:
