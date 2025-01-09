@@ -18,6 +18,7 @@ class CatalogState extends StoreModule {
         sort: 'order',
         query: '',
         category: '',
+        lang: 'ru', // Добавляем параметр языка
       },
       count: 0,
       waiting: false,
@@ -39,6 +40,7 @@ class CatalogState extends StoreModule {
     if (urlParams.has('sort')) validParams.sort = urlParams.get('sort');
     if (urlParams.has('query')) validParams.query = urlParams.get('query');
     if (urlParams.has('category')) validParams.category = urlParams.get('category');
+    if (urlParams.has('lang')) validParams.lang = urlParams.get('lang') || 'ru'; // Добавляем обработку языка из URL
     await this.setParams({ ...this.initState().params, ...validParams, ...newParams }, true);
   }
 
@@ -91,17 +93,27 @@ class CatalogState extends StoreModule {
         sort: params.sort,
         'search[query]': params.query,
         'search[category]': params.category,
+        lang: params.lang || 'ru', // Добавляем параметр языка в запрос к API
       },
       {
         skip: 0,
         'search[query]': '',
         'search[category]': '',
+        lang: 'ru', // Добавляем значение по умолчанию
       },
     );
 
+    // Добавляем заголовок для явного указания языка
+    const headers = {
+      'Accept-Language': params.lang || 'ru',
+      'Content-Language': params.lang || 'ru',
+    };
+
     const res = await this.services.api.request({
       url: `/api/v1/articles?${new URLSearchParams(apiParams)}`,
+      headers, // Добавляем заголовки в запрос
     });
+
     this.setState(
       {
         ...this.getState(),
