@@ -7,6 +7,14 @@ These included an intensive stream of core tasks, additional opportunities for e
 - You can view my earned certificate here: [LINK](https://www.linkedin.com/in/evakoss/overlay/1729846576652/single-media-viewer/?profileId=ACoAADqRPIABg6xjAzU9Q5wgeEYMjwNkDJ0WKCo)
 - For anyone curious to explore the deployed version, you can check it out here: [LINK]
 
+## Test Credentials
+To access the cab system, you can use the following test credentials:
+```bash
+  "login": "test_1",
+  "password": "123456"
+```
+
+
 ## Getting Started
 Follow these steps to set up the project locally:
 
