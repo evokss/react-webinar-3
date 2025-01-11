@@ -5,7 +5,7 @@ Over the course of three months, I completed all assigned tasks and had the priv
 These included an intensive stream of core tasks, additional opportunities for early finishers, and creative projects for those eager to showcase their innovation in web app development.
 
 - You can view my earned certificate here: [LINK](https://www.linkedin.com/in/evakoss/overlay/1729846576652/single-media-viewer/?profileId=ACoAADqRPIABg6xjAzU9Q5wgeEYMjwNkDJ0WKCo)
-- For anyone curious to explore the deployed version, you can check it out here: [LINK]
+- For anyone curious to explore the deployed version, you can check it out here: [LINK](https://react-products-market.vercel.app)
 
 ## Test Credentials
 To access the cab system, you can use the following test credentials:
